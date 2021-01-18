@@ -1,0 +1,35 @@
+#login{
+    padding: 30px;
+    position: relative;
+    left: 50%;
+    margin-top: 50px;
+    transform: translate(-50%,0%);
+    display: flex;
+    background-color: #bbf1fa;
+    width: 40vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px -5px rgb(53, 53, 53);
+    font-family: 'Montserrat',sans-serif;
+}
+
+#username,#password{
+    margin: 40px 10px 10px 10px;
+    font-size: 15px;
+}
+
+#username_input,#password_input{
+    width: auto;
+    border: none;
+    border-bottom: 3px solid #51c2d5;
+    padding: 10px;
+    position: relative;
+    font-size: 25px;
+    background: none;
+    outline: none;
+}
+
+
+

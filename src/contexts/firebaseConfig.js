@@ -13,7 +13,7 @@ const uiConfig = {
     callbacks: {
         signInSuccessWithAuthResult: (authResult, redirectUrl)=>{
             console.log("sign in was a success,authresult = ",authResult);
-            return false;
+            return true;
         }
     },
     signInFlow: 'popup',

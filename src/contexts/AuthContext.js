@@ -1,8 +1,10 @@
 import React,{createContext,Component} from 'react';
+import firebase from 'firebase';
 
 export const AuthContext = createContext();
 
 export default class AuthContextProvider extends Component{
+    
     state = {
         isLoggedIn: false,
         userDetails: {
@@ -13,30 +15,37 @@ export default class AuthContextProvider extends Component{
         }
     }
 
-    updateLoginStats = (loginStatus) => {
-        this.setState({isLoggedIn: loginStatus})
-    }
-
-    updateUserDetails = (displayName,email) => {
-        this.setState({
-            userDetails: {
-                displayName: displayName,
-                email: email
+    componentDidMount(){
+        firebase.auth().onAuthStateChanged(async (user) => {
+            if(user){
+                this.setState({
+                    isLoggedIn: true,
+                    userDetails: {
+                        displayName: user.displayName,
+                        email: user.email
+                    }
+                });
+            }
+            else{
+                this.updateLoginStats(false);
+                console.log("user not found");
             }
         });
         console.log("new user is = ",this.state.userDetails)
+    }
+
+    updateLoginStats = (loginStatus) => {
+        this.setState({isLoggedIn: loginStatus})
     }
 
     render(){
         return(
             <AuthContext.Provider value={{
                 ...this.state,
-                updateUser: this.updateUserDetails,
                 updateLogin: this.updateLoginStats
                 }}>
                 {this.props.children}
             </AuthContext.Provider>
         )
-
     }
 }

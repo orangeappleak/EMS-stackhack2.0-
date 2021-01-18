@@ -1,3 +1,5 @@
+import React,{useContext,useEffect} from 'react';
+
 //various style sheets for all the components.
 import './styles/global.css';
 
@@ -8,6 +10,7 @@ import NavBar from './components/NavBar';
 
 //state managements using contexts imported from the contexts folder.
 import AuthContextProvider from './contexts/AuthContext';
+import firebaseInit from './contexts/firebase';
 
 //react router for navigation through various links.
 import {
@@ -17,10 +20,12 @@ import {
 } from 'react-router-dom'
 
 function App() {
+  firebaseInit();
+
   return (
     <AuthContextProvider>
-      <NavBar />
       <Router>
+        <NavBar />
         <div id="app">
         </div>
         <Switch>

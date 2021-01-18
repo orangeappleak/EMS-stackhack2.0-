@@ -22,11 +22,11 @@ export default function firebaseInit(){
     //else we create a new firebase ui instance.
     if(firebaseui.auth.AuthUI.getInstance()){
         var ui = firebaseui.auth.AuthUI.getInstance();
-        ui.start("#login",ui_config);
+        ui.start("#google_login",ui_config);
     }
     else{
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
-        ui.start("#login",ui_config);
+        ui.start("#google_login",ui_config);
     }
 
 }

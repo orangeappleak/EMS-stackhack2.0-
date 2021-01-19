@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 #nav-bar{
+    height: 5vh;
     padding: 10px 30px 10px 30px;
     background-color: #374045;
     position: sticky;

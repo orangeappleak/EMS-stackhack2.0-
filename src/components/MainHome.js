@@ -1,11 +1,9 @@
-import React,{useContext,useEffect} from 'react';
+import React,{useContext} from 'react';
 import {AuthContext} from '../contexts/AuthContext';
-
 
 export default function MainHome(){
 
-    const {isLoggedIn, userDetails, updateLogin} = useContext(AuthContext);
-    
+    const { userDetails } = useContext(AuthContext);
     return(
         <div id="main-page">
             <h1>This is the main page of the web app.</h1>

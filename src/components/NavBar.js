@@ -10,13 +10,14 @@ const Navbar = () => {
 
     return ( 
         <div id="nav-bar">
+            <img style={{height:"100%",borderRadius: '100px', margin: '20px'}} alt="" src={userDetails.profilePhoto}/>
             <h1 id="app-name">Currently logged in as: {userDetails.displayName}</h1>
             <div id="nav-links">
                 <a href="/">Home</a>
                 <a href="/Profile">Profile</a>
-                {isLoggedIn ? <h1 onClick={() => firebase.auth().signOut().then(() => {
+                {isLoggedIn ? <a href="/" onClick={() => firebase.auth().signOut().then(() => {
                     updateLogin(false);
-                })}>Log out</h1> : <a href="/Login">Login</a>}
+                })}>Log out</a> : <a href="/Login">Login</a>}
             </div>
         </div>
      );

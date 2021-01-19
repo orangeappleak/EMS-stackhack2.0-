@@ -22,16 +22,23 @@ export default class AuthContextProvider extends Component{
                     isLoggedIn: true,
                     userDetails: {
                         displayName: user.displayName,
-                        email: user.email
+                        email: user.email,
+                        profilePhoto: user.photoURL
                     }
                 });
             }
             else{
-                this.updateLoginStats(false);
+                this.setState({
+                    isLoggedIn: false,
+                    userDetails: {
+                        displayName: '',
+                        email: '',
+                        profilePhoto: ''
+                    }   
+                });
                 console.log("user not found");
             }
         });
-        console.log("new user is = ",this.state.userDetails)
     }
 
     updateLoginStats = (loginStatus) => {

@@ -2,14 +2,18 @@ import React from 'react';
 
 //various style sheets for all the components.
 import './styles/global.css';
+import './styles/profile.css';
 
 //various components used through out the app.
 import Login from './components/login'
 import MainHome from './components/MainHome';
 import NavBar from './components/NavBar';
+import Management from './components/Management';
+import Profile from './components/Profile';
 
 //state managements using contexts imported from the contexts folder.
 import AuthContextProvider from './contexts/AuthContext';
+import TeamContextProvider from './contexts/TeamContext';
 import './contexts/firebaseConfig';
 
 //react router for navigation through various links.
@@ -22,8 +26,8 @@ import {
 function App() {
   return (
     <AuthContextProvider>
-      <NavBar />
       <Router>
+        <NavBar />
         <div id="app">
         </div>
         <Switch>
@@ -32,6 +36,14 @@ function App() {
           </Route>
           <Route exact path="/login">
             <Login />
+          </Route>
+          <Route exact path="/Manage">
+            <Management />
+          </Route>
+          <Route exact path="/Profile">
+            <TeamContextProvider>
+              <Profile />
+            </TeamContextProvider>
           </Route>
         </Switch>
       </Router>

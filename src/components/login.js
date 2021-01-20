@@ -1,9 +1,15 @@
 import '../styles/login.css';
 
-import React from 'react';
+import React,{useEffect} from 'react';
+import firebaseUiInit from '../contexts/firebaseConfig';
 
 
 export default function Login(){
+
+
+    useEffect(() => {
+        firebaseUiInit();
+    }, []);
 
     return(
         <div id="login-wrapper">

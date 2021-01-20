@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import {Link} from 'react-router-dom';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAwRfkeMiWVnSIlQwglsOo5oG-TAlwp4xo",
@@ -11,14 +12,8 @@ const firebaseConfig = {
   };
 
 const uiConfig = {
-    callbacks: {
-        signInSuccessWithAuthResult: (authResult, redirectUrl)=>{
-            console.log("sign in was a success,authresult = ",authResult);
-            return true;
-        }
-    },
+    signInSuccessUrl: "/",
     signInFlow: 'popup',
-    signInSuccessurl: '/',
     signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID
@@ -29,7 +24,6 @@ var firebaseui = require('firebaseui')
 var ui
 
 const firebase_config = firebaseConfig;
-const ui_config = uiConfig;
 
 //checking if the firebase app is already initialized or not.
 if(!firebase.apps.length){
@@ -40,14 +34,16 @@ else{
 }
 
 
-//checking if an instance of firebase ui already exists or not
-//if it does we just use that instance
-//else we create a new firebase ui instance.
-if(firebaseui.auth.AuthUI.getInstance()){
-    ui = firebaseui.auth.AuthUI.getInstance();
-    ui.start("#google_login",ui_config);
-}
-else{
-    ui = new firebaseui.auth.AuthUI(firebase.auth());
-    ui.start("#google_login",ui_config);
+export default function firebaseUiInit(){
+    //checking if an instance of firebase ui already exists or not
+    //if it does we just use that instance
+    //else we create a new firebase ui instance.
+    if(firebaseui.auth.AuthUI.getInstance()){
+        ui = firebaseui.auth.AuthUI.getInstance();
+        ui.start("#google_login",uiConfig);
+    }
+    else{
+        ui = new firebaseui.auth.AuthUI(firebase.auth());
+        ui.start("#google_login",uiConfig);
+    }
 }

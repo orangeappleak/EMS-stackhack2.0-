@@ -1,58 +1,95 @@
-import React,{createContext,Component} from 'react';
+import React,{createContext,Component,useState,useEffect} from 'react';
 import firebase from 'firebase';
 
 export const AuthContext = createContext();
 
-export default class AuthContextProvider extends Component{
-    
-    state = {
-        isLoggedIn: false,
-        userDetails: {
-            userName: 'Karthik',
-            displayName: '',
-            email: '',
-            profilePhoto: ''
-        }
-    }
 
-    componentDidMount(){
+const AuthContextProvider = (props) => {
+    const[isLoggedIn, updateLogin] = useState(false);
+    const[userDetails,updateUserDetails] = useState({
+        username: 'Karthik',
+        displayName: '',
+        email: '',
+        profilePhoto: ''
+    });
+
+    var user = firebase.auth().currentUser;
+
+    useEffect(() => {
         firebase.auth().onAuthStateChanged(async (user) => {
             if(user){
-                this.setState({
-                    isLoggedIn: true,
-                    userDetails: {
-                        displayName: user.displayName,
-                        email: user.email,
-                        profilePhoto: user.photoURL
-                    }
-                });
+                updateLogin(true);
+                console.log("The current logged in user = ",user);
+                updateUserDetails({
+                    displayName: user.displayName,
+                    email: user.email,
+                    profilePhoto: user.photoURL
+                })
             }
             else{
-                this.setState({
-                    isLoggedIn: false,
-                    userDetails: {
-                        displayName: '',
-                        email: '',
-                        profilePhoto: ''
-                    }   
-                });
-                console.log("user not found");
+                updateLogin(false);
+                updateUserDetails({
+                    displayName: '',
+                    email: '',
+                    profilePhoto: ''
+                })
             }
-        });
-    }
+        })
+    },[])
 
-    updateLoginStats = (loginStatus) => {
-        this.setState({isLoggedIn: loginStatus})
-    }
-
-    render(){
-        return(
-            <AuthContext.Provider value={{
-                ...this.state,
-                updateLogin: this.updateLoginStats
-                }}>
-                {this.props.children}
-            </AuthContext.Provider>
-        )
-    }
+    return(
+        <AuthContext.Provider value={{isLoggedIn,userDetails,updateLogin}}>
+            {props.children}
+        </AuthContext.Provider>
+    )
 }
+
+export default AuthContextProvider;
+
+// export default class AuthContextProvider extends Component{
+    
+//     state = {
+//         isLoggedIn: false,
+//         userDetails: {
+//             userName: 'Karthik',
+//             displayName: '',
+//             email: '',
+//             profilePhoto: ''
+//         }
+//     }
+
+//     componentDidMount(){
+//         console.log("component")
+//         firebase.auth().onAuthStateChanged(async (user) => {
+//             if(user){
+//                 this.setState({
+//                     isLoggedIn: true,
+//                     userDetails: {
+//                         displayName: user.displayName,
+//                         email: user.email,
+//                         profilePhoto: user.photoURL
+//                     }
+//                 });
+//             }
+//             else{
+//                 this.setState({
+//                     isLoggedIn: false,
+//                     userDetails: {
+//                         displayName: '',
+//                         email: '',
+//                         profilePhoto: ''
+//                     }   
+//                 });
+//                 console.log("user not found");
+//             }
+//         });
+//     }
+
+//     updateLoginStats = (loginStatus) => {
+//         this.setState({isLoggedIn: loginStatus})
+//     }
+
+//     render(){
+        
+//     }
+// }

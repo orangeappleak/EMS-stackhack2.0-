@@ -1,0 +1,94 @@
+#profile-background{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 30%;
+    background-color: #033055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%23033055' cx='50' cy='0' r='50'/%3E%3Cg fill='%2302345d' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23003865' cx='50' cy='100' r='50'/%3E%3Cg fill='%23003d6c' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%23004174' cx='50' cy='200' r='50'/%3E%3Cg fill='%2300457d' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%23004a85' cx='50' cy='300' r='50'/%3E%3Cg fill='%23004e8d' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23005395' cx='50' cy='400' r='50'/%3E%3Cg fill='%2300579e' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%23005ca6' cx='50' cy='500' r='50'/%3E%3Cg fill='%230060af' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%230065b8' cx='50' cy='600' r='50'/%3E%3Cg fill='%230069c0' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%23006ec9' cx='50' cy='700' r='50'/%3E%3Cg fill='%230073d2' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%230077db' cx='50' cy='800' r='50'/%3E%3Cg fill='%23007ce4' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%230081ed' cx='50' cy='900' r='50'/%3E%3Cg fill='%230085f6' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23088aff' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: contain;
+    animation: fade-in 0.3s ease-in-out;
+    z-index: -1;
+}
+
+#account{
+    padding: 50px;
+    margin: 100px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255);
+}
+
+#account h1{
+    font-size: 50px;
+    font-family: 'Roboto',sans-serif;
+    color: black;
+}
+
+
+#account-details{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto',sans-serif;
+    color: rgba(0, 0, 0, 0.419);
+}
+
+#team-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 60px 20em 60px 20em;
+    background-color: #0f3057;
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.398);
+    font-size: 17px;
+    text-align: center;
+    height: 10vh;
+    font-family: 'Roboto',sans-serif;
+    transition: height 0.2s ease-in-out;
+}
+
+#team-details.openTeamDetails{
+    height: 50vh;
+}
+
+#add-team{
+    margin: 10px 10px 50px 10px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0) scale(0.95);
+    padding: 20px;
+    border-radius: 20px;
+    width: 10%;
+    border: 2px solid #0f3057;
+    color: #008891;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Roboto',sans-serif;
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.665);
+    transition: transform 0.2s ease-in-out,background-color 0.3s ease-in-out,box-shadow 0.1s ease-in-out ;
+}
+
+#add-team:hover{
+    transform: translate(-50%,0) scale(1);
+    background-color: #0f3057;
+    box-shadow: 0px 12px 20px -10px rgba(0, 0, 0, 0.665)
+}
+
+@keyframes fade-in{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

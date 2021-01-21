@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 const AuthContextProvider = (props) => {
     const[isLoggedIn, updateLogin] = useState(false);
     const[userDetails,updateUserDetails] = useState({
-        username: 'Karthik',
+        username: '',
         displayName: '',
         email: '',
         profilePhoto: ''
@@ -19,6 +19,8 @@ const AuthContextProvider = (props) => {
         firebase.auth().onAuthStateChanged(async (user) => {
             if(user){
                 updateLogin(true);
+                console.log(isLoggedIn);
+                firebase.firestore().collection('Teams').doc(user.displayName.toString()).set({});
                 console.log("The current logged in user = ",user);
                 updateUserDetails({
                     displayName: user.displayName,
@@ -28,6 +30,7 @@ const AuthContextProvider = (props) => {
             }
             else{
                 updateLogin(false);
+                console.log(isLoggedIn);
                 updateUserDetails({
                     displayName: '',
                     email: '',

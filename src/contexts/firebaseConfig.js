@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import {Link} from 'react-router-dom';
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyAwRfkeMiWVnSIlQwglsOo5oG-TAlwp4xo",
     authDomain: "stackhack2.firebaseapp.com",
@@ -9,7 +10,7 @@ const firebaseConfig = {
     storageBucket: "stackhack2.appspot.com",
     messagingSenderId: "500031398666",
     appId: "1:500031398666:web:9b4a4889506d61e6d310f3"
-  };
+};
 
 const uiConfig = {
     signInSuccessUrl: "/",

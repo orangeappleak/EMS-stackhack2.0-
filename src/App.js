@@ -29,8 +29,6 @@ function App() {
     <AuthContextProvider>
       <Router>
         <NavBar />
-        <div id="app">
-        </div>
         <Switch>
           <Route exact path="/">
             <MainHome />

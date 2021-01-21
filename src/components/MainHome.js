@@ -6,8 +6,12 @@ export default function MainHome(){
     const { userDetails } = useContext(AuthContext);
     return(
         <div id="main-page">
-            <h1>This is the main page of the web app.</h1>
-            <h1>The current logged in user is: {userDetails.displayName}</h1>
+            <div id="employees-illustration">
+                <img src="https://assets.website-files.com/5bff8886c3964a992e90d465/5c00621b7aefa4f9ee0f4303_wide-shot.svg"></img>
+            </div>
+            <div id="main-page-heading">
+                <h1>Its easier to manage your teams and employees now.</h1>
+            </div>
         </div>
     )
 }

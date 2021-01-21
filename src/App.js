@@ -2,6 +2,7 @@ import React from 'react';
 
 //various style sheets for all the components.
 import './styles/global.css';
+import './styles/mainHome.css';
 import './styles/profile.css';
 
 //various components used through out the app.

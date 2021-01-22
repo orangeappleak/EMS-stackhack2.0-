@@ -30,7 +30,6 @@ const AuthContextProvider = (props) => {
             }
             else{
                 updateLogin(false);
-                console.log(isLoggedIn);
                 updateUserDetails({
                     displayName: '',
                     email: '',

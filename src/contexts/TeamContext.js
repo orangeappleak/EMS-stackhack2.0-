@@ -9,16 +9,18 @@ export const TeamContext = createContext();
 
 const TeamContextProvider = (props) => {
 
+    const [reRender, updateReRender] = useState(false);
+
     const [teamDetails, updateTeamDetails] = useState({
         teams:[]
     });
-    
 
-    useEffect(() => {
+    const updateTeams = () => {
+        updateTeamDetails({teams: []})
         firebase.auth().onAuthStateChanged(async (user) => {
             if(user){
                 firestore.collection('Teams').doc(user.displayName.toString()).collection('addedTeams').get().then((data) => {
-                    data.forEach((el,index) => {
+                    data.forEach((el) => {
                         updateTeamDetails((prevState) => ({teams:[...prevState.teams,el.data()]}))
                     })
                 })
@@ -27,11 +29,19 @@ const TeamContextProvider = (props) => {
                 updateTeamDetails({teams: []})
             }
         })
-        
-    },[]);
+    }
+    
+
+    useEffect(() => {
+        updateTeams();
+    },[reRender]);
+
+    const renderAgain = () => {
+        updateTeams();
+    }
 
     return(
-        <TeamContext.Provider value = {{teamDetails,updateTeamDetails}}>
+        <TeamContext.Provider value = {{reRender:renderAgain,teamDetails,updateTeamDetails}}>
             {props.children}
         </TeamContext.Provider>
     )

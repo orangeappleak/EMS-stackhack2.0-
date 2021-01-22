@@ -64,25 +64,26 @@
 }
 
 #team-details{
+    padding: 40px;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(2, minmax(0, 6fr));;
     grid-template-rows: auto auto;
-    justify-self: center;
-    align-items: center;
-    justify-content: center;
-    
+
 }
 
-.team{
+.team-card{
     margin: 20px;
     border-radius: 20px;
-    padding: 50px;
+    padding: 40px;
     color: white;
-    background-color: #008891;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #330055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%23330055' cx='50' cy='0' r='50'/%3E%3Cg fill='%233a015d' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23410165' cx='50' cy='100' r='50'/%3E%3Cg fill='%2348026e' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%23500376' cx='50' cy='200' r='50'/%3E%3Cg fill='%2357047e' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%235f0587' cx='50' cy='300' r='50'/%3E%3Cg fill='%2367068f' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%236f0798' cx='50' cy='400' r='50'/%3E%3Cg fill='%237707a0' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%238008a9' cx='50' cy='500' r='50'/%3E%3Cg fill='%238909b1' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%239109ba' cx='50' cy='600' r='50'/%3E%3Cg fill='%239a09c3' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%23a309cb' cx='50' cy='700' r='50'/%3E%3Cg fill='%23ad09d4' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23b608dc' cx='50' cy='800' r='50'/%3E%3Cg fill='%23c007e5' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%23c905ee' cx='50' cy='900' r='50'/%3E%3Cg fill='%23d303f6' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23D0F' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: no-repeat;
+    background-size: contain;
 }
 
 .team hr{
@@ -90,12 +91,18 @@
 }
 
 .team h1{
-    color:  #0f3057;
-    font-size: 28px;
+    color: rgb(255, 111, 0);
+    font-size: 32px;
 }
 
 .team h2{
-    font-size: 18px;
+    font-size: 22px;
+    margin: 10px;
+}
+
+.team h2 span{
+    color: orange;
+    opacity: 1;
 }
 
 #team-details.openTeamDetails{
@@ -103,10 +110,11 @@
 }
 
 #add-new-team{
+    padding: 0px;
     display: flex;
     background-color: #008891;
     margin: 50px;
-    width: 50%;
+    width: 40%;
     height: 0;
     border-radius: 20px;
     transition: display 0.1s ease-in-out,height 0.6s ease-in-out;
@@ -119,6 +127,7 @@
     display: flex;
     flex-direction: column;
     height: 40vh;
+    padding: 40px;
 }
 
 #add-new-team input,#add-new-team h1{
@@ -131,13 +140,85 @@
 }
 
 #add-new-team.open input{
+    width: 40%;
     outline: none;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
     font-size: 18px;
     font-family: 'Roboto',sans-serif;
 }
 
+#add-new-team button{
+    display: none;
+}
+
+#add-new-team.open button{
+    margin: 20px;
+    font-size: 22px;
+    border-radius: 20px;
+    display: block;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    background-color: #0f3057;
+    box-shadow: 0px 0px 0px 0px transparent;
+    transform: scale(0.9);
+    border-style: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+#add-new-team.open button:hover{
+    transform: scale(1);
+    box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.344);
+}
+
+#add-new-team.open button:focus{
+    outline: none;
+}
+
+#delete-team{
+    padding: 10px;
+    margin: 0 0 10px 0;
+    align-self: flex-end;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: rgb(6, 111, 191);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto",sans-serif;
+    transition: width 0.3s ease-in-out;
+    opacity: 1;
+}
+
+#delete-team h1{
+    color: orange;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+
+#delete-team h2{
+    color: orange;
+    pointer-events: none;
+    position: absolute;
+    visibility: collapse;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+#delete-team:hover{
+    width: 40%;
+}
+
+#delete-team:hover h2{
+    opacity: 1;
+    visibility: visible;
+}
+
+#delete-team:hover h1{
+    opacity: 0;
+}
 
 #add-team{
     margin: 10px 10px 50px 10px;
@@ -161,6 +242,7 @@
     background-color: #0f3057;
     box-shadow: 0px 12px 20px -10px rgba(0, 0, 0, 0.665)
 }
+
 
 @keyframes fade-in{
     from{

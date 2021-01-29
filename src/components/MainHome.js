@@ -18,6 +18,9 @@ export default function MainHome(){
             <div id="new-div">
                 <h1>This is a new div.</h1>
             </div>
+            <div id="new-div-added">
+                <h1>added from other</h1>
+            </div>
 
         </div>
     )

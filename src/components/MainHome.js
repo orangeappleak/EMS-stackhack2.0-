@@ -12,6 +12,13 @@ export default function MainHome(){
             <div id="main-page-heading">
                 <h1>Its easier to manage your teams and employees now.</h1>
             </div>
+            <div id="main-page-details">
+                <h1>This is where the word changes.</h1>
+            </div>
+            <div id="new-div">
+                <h1>This is a new div.</h1>
+            </div>
+
         </div>
     )
 }
